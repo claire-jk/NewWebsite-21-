@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>佐佐木與宮野/平野與鍵浦</title>
+  <link rel="stylesheet" href="css/manga.css">
+
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="佐宮&鍵平">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- 字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Great+Vibes&family=Lexend:wght@100..900&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 返回首頁 icon -->
+  <a href="index.html" class="home-logo">
+    <img src="image/icon.png" alt="返回首頁">
+  </a>
+
+  <!-- 漢堡選單 -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- 導覽列 -->
+  <nav class="nav-menu" id="navMenu">
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li class="has-submenu">
+        <a href="#" class="submenu-toggle">功能導覽</a>
+        <ul class="submenu">
+          <li><a href="story.html">故事介紹</a></li>
+          <li><a href="character.html">角色介紹</a></li>
+          <li><a href="comic.html">漫畫/動畫</a></li>
+          <li><a href="timeline.html">時間軸</a></li>
+          <li><a href="author.html">作者帳號</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 主內容 -->
+  <div class="comic-container">
+    <!-- 左邊：佐佐木與宮野 -->
+    <section class="comic-section left-section slide-in-left">
+      <h2 class="comic-title">佐佐木與宮野漫畫</h2>
+      <div class="card-container">
+        <!-- 10 個方框 -->
+        <div class="comic-card">
+          <img src="image/sami1.jpg" alt="第一集">
+          <div class="overlay">第一集：相遇的開始</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami2.jpg" alt="第二集">
+          <div class="overlay">第二集：佐佐木開始暗戀宮野</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami3.jpg" alt="第三集">
+          <div class="overlay">第三集：佐佐木告白，宮野開始思考自己對學長的感情</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami4.jpg" alt="第四集">
+          <div class="overlay">第四集：宮野思考何謂"喜歡"?</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami5.jpg" alt="第五集">
+          <div class="overlay">第五集：宮野確定了心意</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami6.jpg" alt="第六集">
+          <div class="overlay">第六集：宮野告白，兩人交往開始</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami7.jpg" alt="第七集">
+          <div class="overlay">第七集：向家人表明交往</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami8.jpg" alt="第八集">
+          <div class="overlay">第八集：甜蜜日常</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami9.jpg" alt="第九集">
+          <div class="overlay">第九集：甜蜜日常，佐佐木大學同學登場</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/sami10.jpg" alt="第十集">
+          <div class="overlay">第十集：宮野高三校慶</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 右邊：平野與鍵浦 -->
+    <section class="comic-section right-section slide-in-right">
+      <h2 class="comic-title">平野與鍵浦漫畫</h2>
+      <div class="card-container">
+        <!-- 4 個方框 -->
+        <div class="comic-card">
+          <img src="image/hika1.jpg" alt="第一集">
+          <div class="overlay">第一集：新的室友&鍵浦暗戀平野</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/hika2.jpg" alt="第二集">
+          <div class="overlay">第二集：鍵浦告白，平野思考對學弟的感情</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/hika3.jpg" alt="第三集">
+          <div class="overlay">第三集：鍵浦提出一天觸碰十秒來讓平野確定心意</div>
+        </div>
+        <div class="comic-card">
+          <img src="image/hika4.jpg" alt="第四集">
+          <div class="overlay">第四集：同寢繼續</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/manga.js"></script>
+  <script src="js/hamburger.js"></script>
+</body>
+</html>
