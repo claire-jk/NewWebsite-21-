@@ -1,0 +1,309 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Zen Kurenaido', 'Lexend', sans-serif;
+  background: #000000;
+  color: #000000;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* 主要容器 */
+.comic-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* 區塊 */
+.comic-section {
+  flex: 1;
+  padding: 250px 20px 60px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  position: relative; /* ✅ 為 ::before 定位 */
+}
+
+/* 左半邊調整 padding-top */
+.left-section {
+  padding: 60px 20px 60px; /* 上方從 250px 改成 100px */
+}
+
+/* 背景模糊層 */
+.left-section::before,
+.right-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: 0;
+}
+
+.left-section::before {
+  background-image: url('../image/samibackground.jpg');
+}
+.right-section::before {
+  background-image: url('../image/hikabackground.jpg');
+}
+
+/* 區塊內容要在模糊層上方 */
+.comic-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 標題 */
+.comic-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeSlideLeft 1s ease forwards;
+  text-shadow: 2px 2px 4px rgba(255,255,0);
+}
+.right-section .comic-title {
+  animation: fadeSlideRight 1s ease forwards;
+}
+
+/* === 方形卡片容器 === */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  max-width: 90%;
+}
+
+/* 方形卡片 */
+.comic-card {
+  position: relative;
+  width: 120px;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.comic-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comic-card:hover {
+  transform: scale(1.05);
+}
+
+/* Overlay 效果 */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+/* 顯示狀態 (由 JS 加 active class) */
+.comic-card.active .overlay {
+  opacity: 1;
+}
+
+/* 動畫 */
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* 響應式：手機直式排列 */
+@media (max-width: 480px) {
+  .comic-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .comic-section {
+    height: auto;
+    padding: 40px 20px;
+  }
+
+  .comic-title {
+    font-size: 1.5rem;
+    animation: fadeSlideDown 1s ease forwards;
+  }
+
+  .right-section .comic-title {
+    animation: fadeSlideUp 1s ease forwards;
+  }
+
+  .comic-card {
+    width: 100px;
+    height: 140px;
+    animation: fadeInUp 1.2s ease forwards;
+  }
+
+  @keyframes fadeSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* === 首頁返回 icon === */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 160px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* 漢堡選單 */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.nav-menu ul li {
+  margin: 20px 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-menu.show {
+  transform: translateX(0);
+}
+
+/* 子選單 */
+.has-submenu .submenu {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.has-submenu.active .submenu {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+.has-submenu > a::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 5px;
+}

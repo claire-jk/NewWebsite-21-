@@ -1,0 +1,261 @@
+/* 字體設定與全局初始化 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Zen Kurenaido', 'Lexend', 'Arial', sans-serif;
+  overflow-x: hidden;
+  background-color: #000000;
+  position: relative;
+}
+
+/* 背景圖 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../image2/hanzawabackground.jpg') no-repeat center center / cover;
+  opacity: 0.25;
+  z-index: -1;
+  animation: slideInRight 1s ease forwards;
+  filter: blur(5px);
+  transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  body::before {
+    background: url('../image2/hanzawabackgroundmobile.jpg') no-repeat center center / cover;
+    animation: slideInBottom 1s ease forwards;
+    opacity: 0.25;
+    filter: blur(5px);
+    transform: scale(1.05);
+  }
+}
+
+/* === 首頁返回 icon === */
+.home-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.home-logo img {
+  width: 160px;
+  transition: transform 0.3s ease;
+}
+
+.home-logo img:hover {
+  transform: scale(1.1);
+}
+
+/* === 人物介紹主區塊 === */
+.character-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 160px 40px;
+  position: relative;
+}
+
+/* === 圖片區塊 === */
+.character-photo {
+  margin: 0;
+  margin-top: 70px;
+}
+
+.character-photo img {
+  width: 300px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* === 簡介區塊 === */
+.character-info {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 600px;
+  backdrop-filter: blur(6px);
+  margin: 0;
+  color: #ffffff;
+  margin-top: 110px;
+}
+
+.character-info h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.character-info p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* === 右側圓圈框 === */
+.side-circle-box {
+  position: fixed;
+  right: 20px;
+  top: 55%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(0, 0, 0, 0.493);
+  padding: 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+
+.circle-link .circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ffffff;
+  transition: transform 0.3s ease;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.circle-link:hover .circle {
+  transform: scale(1.2);
+}
+
+/* === 動畫類別 === */
+.left-slide-in {
+  animation: slideInLeft 1s both;
+}
+
+.right-slide-in {
+  animation: slideInRight 1s both;
+}
+
+/* === 響應式（手機版） === */
+@media (max-width: 480px) {
+  .character-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 20px;
+  }
+
+  .character-photo,
+  .character-info {
+    width: 100%;
+    max-width: 90%;
+    margin: 20px 0;
+    position: static;
+  }
+
+  .left-slide-in {
+    animation-name: slideInTop;
+  }
+
+  .right-slide-in {
+    animation-name: slideInBottom;
+  }
+}
+
+/* === 動畫關鍵幀 === */
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInTop {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInBottom {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* 響應式：小螢幕顯示漢堡 */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+/* 漢堡選單 */
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #000;
+  display: block;
+}
+
+.nav-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  height: 100%;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 60px 20px;
+}
+
+.nav-menu ul li {
+  margin: 20px 0;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+}
+
+.nav-menu.show {
+  transform: translateX(0);
+}
+
+/* 子選單 */
+.has-submenu .submenu {
+  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding-left: 15px;
+  list-style: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.has-submenu.active .submenu {
+  max-height: 500px;
+  margin-top: 10px;
+}
+
+.has-submenu > a::after {
+  content: ' ▼';
+  font-size: 0.8em;
+  margin-left: 5px;
+}
